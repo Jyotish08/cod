@@ -1,0 +1,317 @@
+{
+  "$defs": {
+    "AuditMetadataContract": {
+      "properties": {
+        "has_statement": {
+          "default": false,
+          "title": "Has Statement",
+          "type": "boolean"
+        },
+        "has_sample_tests": {
+          "default": false,
+          "title": "Has Sample Tests",
+          "type": "boolean"
+        },
+        "has_hidden_tests": {
+          "default": false,
+          "title": "Has Hidden Tests",
+          "type": "boolean"
+        },
+        "has_starter_code": {
+          "default": false,
+          "title": "Has Starter Code",
+          "type": "boolean"
+        },
+        "has_solution": {
+          "default": false,
+          "title": "Has Solution",
+          "type": "boolean"
+        },
+        "status": {
+          "$ref": "#/$defs/IngestionStatus",
+          "default": "NEEDS_MANUAL_REVIEW"
+        },
+        "missing_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Fields",
+          "type": "array"
+        },
+        "raw_source_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Source Hash"
+        }
+      },
+      "title": "AuditMetadataContract",
+      "type": "object"
+    },
+    "CodeTemplateContract": {
+      "properties": {
+        "language": {
+          "default": "python",
+          "description": "e.g., python, javascript, cpp, java",
+          "title": "Language",
+          "type": "string"
+        },
+        "starter_code": {
+          "description": "User-facing boilerplate function/class signature",
+          "title": "Starter Code",
+          "type": "string"
+        },
+        "driver_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Hidden wrapper that parses input_data and invokes starter_code",
+          "title": "Driver Code"
+        }
+      },
+      "required": [
+        "starter_code"
+      ],
+      "title": "CodeTemplateContract",
+      "type": "object"
+    },
+    "Difficulty": {
+      "enum": [
+        "EASY",
+        "MEDIUM",
+        "HARD",
+        "UNKNOWN"
+      ],
+      "title": "Difficulty",
+      "type": "string"
+    },
+    "IngestionStatus": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL_MISSING_TESTS",
+        "PARTIAL_MISSING_TEMPLATE",
+        "PARTIAL_MISSING_SOLUTION",
+        "NEEDS_MANUAL_REVIEW"
+      ],
+      "title": "IngestionStatus",
+      "type": "string"
+    },
+    "SolutionContract": {
+      "properties": {
+        "language": {
+          "default": "python",
+          "title": "Language",
+          "type": "string"
+        },
+        "solution_code": {
+          "title": "Solution Code",
+          "type": "string"
+        },
+        "approach_explanation_md": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approach Explanation Md"
+        },
+        "time_complexity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Time Complexity"
+        },
+        "space_complexity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Space Complexity"
+        }
+      },
+      "required": [
+        "solution_code"
+      ],
+      "title": "SolutionContract",
+      "type": "object"
+    },
+    "TestCaseContract": {
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Id"
+        },
+        "input_data": {
+          "description": "Raw or serialized stdin/arguments for the test case",
+          "title": "Input Data",
+          "type": "string"
+        },
+        "expected_output": {
+          "description": "Expected stdout or serialized return value",
+          "title": "Expected Output",
+          "type": "string"
+        },
+        "is_sample": {
+          "default": false,
+          "description": "True if visible to user in UI; False if hidden judge test",
+          "title": "Is Sample",
+          "type": "boolean"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation"
+        },
+        "order_index": {
+          "default": 0,
+          "title": "Order Index",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "input_data",
+        "expected_output"
+      ],
+      "title": "TestCaseContract",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "integer"
+    },
+    "external_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "External Id"
+    },
+    "slug": {
+      "title": "Slug",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "difficulty": {
+      "$ref": "#/$defs/Difficulty",
+      "default": "UNKNOWN"
+    },
+    "statement_md": {
+      "default": "Problem statement pending enrichment.",
+      "title": "Statement Md",
+      "type": "string"
+    },
+    "constraints_md": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Constraints Md"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "templates": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CodeTemplateContract"
+      },
+      "title": "Templates",
+      "type": "object"
+    },
+    "test_cases": {
+      "items": {
+        "$ref": "#/$defs/TestCaseContract"
+      },
+      "title": "Test Cases",
+      "type": "array"
+    },
+    "solutions": {
+      "additionalProperties": {
+        "$ref": "#/$defs/SolutionContract"
+      },
+      "title": "Solutions",
+      "type": "object"
+    },
+    "time_limit_ms": {
+      "default": 2000,
+      "title": "Time Limit Ms",
+      "type": "integer"
+    },
+    "memory_limit_kb": {
+      "default": 262144,
+      "title": "Memory Limit Kb",
+      "type": "integer"
+    },
+    "audit": {
+      "$ref": "#/$defs/AuditMetadataContract"
+    }
+  },
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "audit"
+  ],
+  "title": "ProblemCanonicalContract",
+  "type": "object"
+}

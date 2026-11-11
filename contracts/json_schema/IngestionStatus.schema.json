@@ -1,0 +1,11 @@
+{
+  "enum": [
+    "COMPLETE",
+    "PARTIAL_MISSING_TESTS",
+    "PARTIAL_MISSING_TEMPLATE",
+    "PARTIAL_MISSING_SOLUTION",
+    "NEEDS_MANUAL_REVIEW"
+  ],
+  "title": "IngestionStatus",
+  "type": "string"
+}

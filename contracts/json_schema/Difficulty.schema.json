@@ -1,0 +1,10 @@
+{
+  "enum": [
+    "EASY",
+    "MEDIUM",
+    "HARD",
+    "UNKNOWN"
+  ],
+  "title": "Difficulty",
+  "type": "string"
+}

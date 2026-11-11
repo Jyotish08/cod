@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "language": {
+      "default": "python",
+      "description": "e.g., python, javascript, cpp, java",
+      "title": "Language",
+      "type": "string"
+    },
+    "starter_code": {
+      "description": "User-facing boilerplate function/class signature",
+      "title": "Starter Code",
+      "type": "string"
+    },
+    "driver_code": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Hidden wrapper that parses input_data and invokes starter_code",
+      "title": "Driver Code"
+    }
+  },
+  "required": [
+    "starter_code"
+  ],
+  "title": "CodeTemplateContract",
+  "type": "object"
+}

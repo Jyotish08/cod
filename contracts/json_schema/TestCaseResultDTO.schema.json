@@ -1,0 +1,90 @@
+{
+  "$defs": {
+    "Verdict": {
+      "enum": [
+        "AC",
+        "WA",
+        "TLE",
+        "MLE",
+        "RE",
+        "CE",
+        "PENDING"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "test_case_index": {
+      "title": "Test Case Index",
+      "type": "integer"
+    },
+    "passed": {
+      "title": "Passed",
+      "type": "boolean"
+    },
+    "verdict": {
+      "$ref": "#/$defs/Verdict"
+    },
+    "input_data": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Input Data"
+    },
+    "actual_output": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Actual Output"
+    },
+    "expected_output": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Output"
+    },
+    "runtime_ms": {
+      "default": 0.0,
+      "title": "Runtime Ms",
+      "type": "number"
+    },
+    "error_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Message"
+    }
+  },
+  "required": [
+    "test_case_index",
+    "passed",
+    "verdict"
+  ],
+  "title": "TestCaseResultDTO",
+  "type": "object"
+}

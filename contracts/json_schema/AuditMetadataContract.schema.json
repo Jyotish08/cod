@@ -1,0 +1,67 @@
+{
+  "$defs": {
+    "IngestionStatus": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL_MISSING_TESTS",
+        "PARTIAL_MISSING_TEMPLATE",
+        "PARTIAL_MISSING_SOLUTION",
+        "NEEDS_MANUAL_REVIEW"
+      ],
+      "title": "IngestionStatus",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "has_statement": {
+      "default": false,
+      "title": "Has Statement",
+      "type": "boolean"
+    },
+    "has_sample_tests": {
+      "default": false,
+      "title": "Has Sample Tests",
+      "type": "boolean"
+    },
+    "has_hidden_tests": {
+      "default": false,
+      "title": "Has Hidden Tests",
+      "type": "boolean"
+    },
+    "has_starter_code": {
+      "default": false,
+      "title": "Has Starter Code",
+      "type": "boolean"
+    },
+    "has_solution": {
+      "default": false,
+      "title": "Has Solution",
+      "type": "boolean"
+    },
+    "status": {
+      "$ref": "#/$defs/IngestionStatus",
+      "default": "NEEDS_MANUAL_REVIEW"
+    },
+    "missing_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Fields",
+      "type": "array"
+    },
+    "raw_source_hash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Raw Source Hash"
+    }
+  },
+  "title": "AuditMetadataContract",
+  "type": "object"
+}

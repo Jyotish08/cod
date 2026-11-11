@@ -1,0 +1,64 @@
+{
+  "$defs": {
+    "Difficulty": {
+      "enum": [
+        "EASY",
+        "MEDIUM",
+        "HARD",
+        "UNKNOWN"
+      ],
+      "title": "Difficulty",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "integer"
+    },
+    "slug": {
+      "title": "Slug",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "difficulty": {
+      "$ref": "#/$defs/Difficulty"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "is_ready_to_solve": {
+      "title": "Is Ready To Solve",
+      "type": "boolean"
+    },
+    "user_status": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "UNSOLVED",
+      "title": "User Status"
+    }
+  },
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "difficulty",
+    "tags",
+    "is_ready_to_solve"
+  ],
+  "title": "ProblemSummaryDTO",
+  "type": "object"
+}

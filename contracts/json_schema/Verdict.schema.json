@@ -1,0 +1,13 @@
+{
+  "enum": [
+    "AC",
+    "WA",
+    "TLE",
+    "MLE",
+    "RE",
+    "CE",
+    "PENDING"
+  ],
+  "title": "Verdict",
+  "type": "string"
+}

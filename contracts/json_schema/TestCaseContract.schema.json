@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Id"
+    },
+    "input_data": {
+      "description": "Raw or serialized stdin/arguments for the test case",
+      "title": "Input Data",
+      "type": "string"
+    },
+    "expected_output": {
+      "description": "Expected stdout or serialized return value",
+      "title": "Expected Output",
+      "type": "string"
+    },
+    "is_sample": {
+      "default": false,
+      "description": "True if visible to user in UI; False if hidden judge test",
+      "title": "Is Sample",
+      "type": "boolean"
+    },
+    "explanation": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Explanation"
+    },
+    "order_index": {
+      "default": 0,
+      "title": "Order Index",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "input_data",
+    "expected_output"
+  ],
+  "title": "TestCaseContract",
+  "type": "object"
+}

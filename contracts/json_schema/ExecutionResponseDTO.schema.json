@@ -1,0 +1,141 @@
+{
+  "$defs": {
+    "TestCaseResultDTO": {
+      "properties": {
+        "test_case_index": {
+          "title": "Test Case Index",
+          "type": "integer"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "verdict": {
+          "$ref": "#/$defs/Verdict"
+        },
+        "input_data": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Data"
+        },
+        "actual_output": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Output"
+        },
+        "expected_output": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Output"
+        },
+        "runtime_ms": {
+          "default": 0.0,
+          "title": "Runtime Ms",
+          "type": "number"
+        },
+        "error_message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error Message"
+        }
+      },
+      "required": [
+        "test_case_index",
+        "passed",
+        "verdict"
+      ],
+      "title": "TestCaseResultDTO",
+      "type": "object"
+    },
+    "Verdict": {
+      "enum": [
+        "AC",
+        "WA",
+        "TLE",
+        "MLE",
+        "RE",
+        "CE",
+        "PENDING"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "submission_id": {
+      "title": "Submission Id",
+      "type": "string"
+    },
+    "problem_id": {
+      "title": "Problem Id",
+      "type": "integer"
+    },
+    "overall_verdict": {
+      "$ref": "#/$defs/Verdict"
+    },
+    "passed_count": {
+      "title": "Passed Count",
+      "type": "integer"
+    },
+    "total_count": {
+      "title": "Total Count",
+      "type": "integer"
+    },
+    "max_runtime_ms": {
+      "title": "Max Runtime Ms",
+      "type": "number"
+    },
+    "results": {
+      "items": {
+        "$ref": "#/$defs/TestCaseResultDTO"
+      },
+      "title": "Results",
+      "type": "array"
+    },
+    "plugin_payloads": {
+      "additionalProperties": true,
+      "description": "Socket for AI hints, AST metrics, etc.",
+      "title": "Plugin Payloads",
+      "type": "object"
+    }
+  },
+  "required": [
+    "submission_id",
+    "problem_id",
+    "overall_verdict",
+    "passed_count",
+    "total_count",
+    "max_runtime_ms",
+    "results"
+  ],
+  "title": "ExecutionResponseDTO",
+  "type": "object"
+}

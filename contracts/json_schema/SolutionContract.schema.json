@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "language": {
+      "default": "python",
+      "title": "Language",
+      "type": "string"
+    },
+    "solution_code": {
+      "title": "Solution Code",
+      "type": "string"
+    },
+    "approach_explanation_md": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approach Explanation Md"
+    },
+    "time_complexity": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time Complexity"
+    },
+    "space_complexity": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Space Complexity"
+    }
+  },
+  "required": [
+    "solution_code"
+  ],
+  "title": "SolutionContract",
+  "type": "object"
+}

@@ -1,0 +1,73 @@
+{
+  "$defs": {
+    "Verdict": {
+      "enum": [
+        "AC",
+        "WA",
+        "TLE",
+        "MLE",
+        "RE",
+        "CE",
+        "PENDING"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "problem_id": {
+      "title": "Problem Id",
+      "type": "integer"
+    },
+    "language": {
+      "title": "Language",
+      "type": "string"
+    },
+    "overall_verdict": {
+      "$ref": "#/$defs/Verdict"
+    },
+    "passed_count": {
+      "title": "Passed Count",
+      "type": "integer"
+    },
+    "total_count": {
+      "title": "Total Count",
+      "type": "integer"
+    },
+    "max_runtime_ms": {
+      "title": "Max Runtime Ms",
+      "type": "number"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "source_code": {
+      "title": "Source Code",
+      "type": "string"
+    },
+    "ast_metrics": {
+      "additionalProperties": true,
+      "title": "Ast Metrics",
+      "type": "object"
+    }
+  },
+  "required": [
+    "id",
+    "problem_id",
+    "language",
+    "overall_verdict",
+    "passed_count",
+    "total_count",
+    "max_runtime_ms",
+    "created_at",
+    "source_code"
+  ],
+  "title": "SubmissionHistoryDTO",
+  "type": "object"
+}

@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "problem_id": {
+      "title": "Problem Id",
+      "type": "integer"
+    },
+    "language": {
+      "title": "Language",
+      "type": "string"
+    },
+    "source_code": {
+      "title": "Source Code",
+      "type": "string"
+    },
+    "mode": {
+      "default": "run",
+      "pattern": "^(run|submit)$",
+      "title": "Mode",
+      "type": "string"
+    },
+    "custom_inputs": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Custom Inputs"
+    }
+  },
+  "required": [
+    "problem_id",
+    "language",
+    "source_code"
+  ],
+  "title": "ExecutionRequestDTO",
+  "type": "object"
+}
